@@ -17,7 +17,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ball" translatesAutoresizingMaskIntoConstraints="NO" id="lZo-2k-Rya">
-                                <rect key="frame" x="20" y="64" width="194" height="398"/>
+                                <rect key="frame" x="20" y="64" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="GS4-ru-iJp"/>
+                                    <constraint firstAttribute="width" constant="150" id="bwm-ZE-XYF"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMz-gr-k2d">
                                 <rect key="frame" x="179" y="432.5" width="56" height="31"/>
@@ -28,8 +32,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lZo-2k-Rya" secondAttribute="bottom" constant="400" id="2Jv-Ci-bj0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lZo-2k-Rya" secondAttribute="trailing" constant="200" id="3q4-b5-dLh"/>
                             <constraint firstItem="lZo-2k-Rya" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="F3h-gk-ss5"/>
                             <constraint firstItem="CMz-gr-k2d" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ma7-XH-jB4"/>
                             <constraint firstItem="lZo-2k-Rya" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="qMR-2W-Hcj"/>
@@ -38,9 +40,7 @@
                     </view>
                     <connections>
                         <outlet property="ball" destination="lZo-2k-Rya" id="VdD-6G-4yc"/>
-                        <outlet property="down" destination="2Jv-Ci-bj0" id="zDl-ox-n5z"/>
                         <outlet property="left" destination="F3h-gk-ss5" id="iFR-Tx-90l"/>
-                        <outlet property="right" destination="3q4-b5-dLh" id="idX-gA-yh2"/>
                         <outlet property="start" destination="CMz-gr-k2d" id="bRZ-Ah-7E9"/>
                         <outlet property="top" destination="qMR-2W-Hcj" id="SpO-pY-SRP"/>
                     </connections>

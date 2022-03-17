@@ -8,14 +8,13 @@
 import UIKit
 
 class ViewController: UIViewController {
+    let ballSize: CGFloat = 150
+    
+    var defaultSpacing: CGFloat = 20
 
     @IBOutlet weak var top: NSLayoutConstraint!
     
     @IBOutlet weak var left: NSLayoutConstraint!
-    
-    @IBOutlet weak var right: NSLayoutConstraint!
-    
-    @IBOutlet weak var down: NSLayoutConstraint!
     
     @IBOutlet weak var ball: UIImageView!
   
@@ -35,25 +34,33 @@ class ViewController: UIViewController {
     
     @objc
     private func moving() {
-        UIView.animate(withDuration: 1, delay: 0, options: [.curveLinear], animations: {
-            self.right.constant -= 350
+        
+        let width = Double(self.view.frame.width) - 2 * defaultSpacing - ballSize
+        let height = Double(self.view.frame.height) - 2 * defaultSpacing - ballSize
+        
+        let horizontalDuration: TimeInterval = 1
+        let verticalDuration: TimeInterval = horizontalDuration * height / width
+        
+        UIView.animate(withDuration: horizontalDuration, delay: 0, options: [.curveLinear], animations: {
+            self.left.constant = self.view.frame.width - self.defaultSpacing - self.ballSize
             self.view.layoutIfNeeded()
         }, completion: {_ in
-        UIView.animate(withDuration: 1, delay: 0, options: [.curveLinear], animations: {
-            self.down.constant -= 150
+        UIView.animate(withDuration: verticalDuration, delay: 0, options: [.curveLinear], animations: {
+            self.top.constant = self.view.frame.height - self.defaultSpacing - self.ballSize
             self.view.layoutIfNeeded()
         } , completion: {_ in
-        UIView.animate(withDuration: 1, delay: 0, options: [.curveLinear], animations: {
-            self.left.constant -= 350
+        UIView.animate(withDuration: horizontalDuration, delay: 0, options: [.curveLinear], animations: {
+            self.left.constant = self.defaultSpacing
             self.view.layoutIfNeeded()
         } , completion: {_ in
-            UIView.animate(withDuration: 1, delay: 0, options: [.curveLinear], animations: {
-            self.top.constant += 150
+            UIView.animate(withDuration: verticalDuration, delay: 0, options: [.curveLinear], animations: {
+            self.top.constant = self.defaultSpacing
             self.view.layoutIfNeeded()
-            }
-        )}
-        )}
-        )}
-        )}
-    
+            },completion: { _ in
+                self.moving()
+            })
+        })
+    })
+})
+    }
 }
